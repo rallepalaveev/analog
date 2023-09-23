@@ -1,0 +1,60 @@
+Name      A2VGA;
+Partno    00;
+Date      27/11/22;
+Revision  01;
+Designer  Ralle Palaveev;
+Company   None;
+Assembly  None;
+Location  None;
+Device    g22V10;
+
+/****************************************************************/
+/*                                                              */
+/*  Based on Apple II Pi Pico Address Logic by David Kuder      */
+/*                                                              */
+/****************************************************************/
+
+/**  Inputs  **/
+
+PIN 1           = A0;
+PIN 2           = A1;
+PIN 3           = A2;
+PIN 4           = A3;
+PIN 5           = A4;
+PIN 6           = A5;
+PIN 7           = A6;
+PIN 8           = A7;
+PIN 9           = A10;  
+PIN 10          = A9;
+PIN 11          = A8;
+PIN 13          = !IOSELECT;    /* $CnXX Selected -> Base ROM   */
+PIN 14          = !DEVSELECT;   /* $C0nX Selected -> 16B I/O    */
+PIN 16          = !RESET;       /* System Reset                 */
+PIN 17          = !IOSTROBE;    /* $C8XX Selected -> Extd ROM   */
+PIN [21..18]      = [BSEL3..0];   /* Buffer Mode Select         */
+
+/**  Outputs  **/
+
+PIN 15          = !CARDSELECT;  /* Card Select                 **/
+
+/** Pins 14 and 15 are to be shorted if no PAL is used         **/
+
+/**  Logic Overflow  **/
+
+PIN 22          = EXTENABLE;    /* Combinatorial                */
+PIN 23          = EXTDISABLE;   /* Combinatorial                */
+
+/** Logic Equations **/
+
+/* $CFFF disables, but only triggered during AddrLo */
+/* EXTOFF = IOSTROBE & [A10..0]:'b'11111111111 & [BSEL3..0]:'b'101X; */
+
+/* Implement an SR Latch */
+EXTDISABLE = !(EXTENABLE # IOSELECT);
+EXTENABLE = !(EXTDISABLE # RESET # (IOSTROBE & [A10..0]:'b'11111111111 & [BSEL3..0]:'b'101X) # [BSEL3..0]:'b'0111);
+
+/* $C8XX and extended rom is enabled */
+/* EXTSELECT = EXTENABLE & IOSTROBE; */
+
+/* Tell the Pico that the Apple wants attention. */
+CARDSELECT = DEVSELECT # IOSELECT # (EXTENABLE & IOSTROBE);
