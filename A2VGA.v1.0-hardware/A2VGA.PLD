@@ -31,7 +31,7 @@ PIN 13          = !IOSELECT;    /* $CnXX Selected -> Base ROM   */
 PIN 14          = !DEVSELECT;   /* $C0nX Selected -> 16B I/O    */
 PIN 16          = !RESET;       /* System Reset                 */
 PIN 17          = !IOSTROBE;    /* $C8XX Selected -> Extd ROM   */
-PIN [21..18]      = [BSEL3..0];   /* Buffer Mode Select         */
+PIN [18..21]      = [BSEL3..0];   /* Buffer Mode Select         */
 
 /**  Outputs  **/
 
