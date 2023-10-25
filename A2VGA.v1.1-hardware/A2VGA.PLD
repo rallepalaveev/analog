@@ -14,17 +14,7 @@ Device    g22V10;
 /*                                                              */
 /****************************************************************/
 
-PIN 1           = A0;
-PIN 2           = A1;
-PIN 3           = A2;
-PIN 4           = A3;
-PIN 5           = A4;
-PIN 6           = A5;
-PIN 7           = A6;
-PIN 8           = A7;
-PIN 9           = A8;  
-PIN 10          = A9;
-PIN 11          = A10;
+PIN [1..11]     = [A0..10];
 PIN 13          = IOSEL;
 PIN 14          = DEVSEL;
 PIN 15          = SEL;
@@ -34,5 +24,5 @@ PIN [18..21]    = [BSEL3..0];
 PIN 22          = EXTENABLE;
 PIN 23          = EXTDISABLE;
 EXTDISABLE = !(EXTENABLE # !IOSEL);
-EXTENABLE = !(EXTDISABLE # !RESET # (!IOSTR & [A10..0]:'b'11111111111 & [BSEL3..0]:'b'101X) # [BSEL3..0]:'b'0111);
+EXTENABLE = !(EXTDISABLE # !RESET # (!IOSTR & [A0..10]:'b'11111111111 & [BSEL3..0]:'b'101X) # [BSEL3..0]:'b'0111);
 SEL = DEVSEL & IOSEL & (!EXTENABLE # IOSTR);
