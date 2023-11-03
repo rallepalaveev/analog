@@ -20,17 +20,7 @@ Device    g22V10;
 
 /**  Inputs  **/
 
-PIN 1           = A0;
-PIN 2           = A1;
-PIN 3           = A2;
-PIN 4           = A3;
-PIN 5           = A4;
-PIN 6           = A5;
-PIN 7           = A6;
-PIN 8           = A7;
-PIN 9           = A10;  
-PIN 10          = A9;
-PIN 11          = A8;
+PIN [1..11]     = [A0..A10];
 PIN 13          = !IOSELECT;    /* $CnXX Selected -> Base ROM   */
 PIN 14          = !DEVSELECT;   /* $C0nX Selected -> 16B I/O    */
 PIN 16          = !RESET;       /* System Reset                 */
