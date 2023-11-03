@@ -53,7 +53,7 @@ PIN 23          = EXTDISABLE;   /* Combinatorial                */
 
 /* Implement an SR Latch */
 EXTDISABLE = !(EXTENABLE # IOSELECT);
-EXTENABLE = !(EXTDISABLE # RESET # (IOSTROBE & [A2..0]:'b'111 & [BSEL3..0]:'b'101X) # [BSEL3..0]:'b'0111);
+EXTENABLE = !(EXTDISABLE # RESET # (IOSTROBE & [A10..8]:'b'111 & [BSEL3..0]:'b'101X) # [BSEL3..0]:'b'0111);
 
 /* $C8XX and extended rom is enabled */
 /* EXTSELECT = EXTENABLE & IOSTROBE; */
