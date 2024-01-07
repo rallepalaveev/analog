@@ -5,7 +5,7 @@ This project is a new hardware implementation of the work done by Mark Aikens an
 The card is based on RPI Pico, 74LVC245 chips and a PLD. It is all through-hole. An improvement is that an ATF22V10 is used, which has sufficient I/O lines to allow that all necessaty bits of the address bus (A0-A10) are decoded for correct switching off of the ExtROM, in case the RPI firmware is using this memory.
 
 This v1.6 implements:
-  * IRQ and USB power functionalities necessary for the A2USB firmware kindly provided by Thorsten Brehm: https://github.com/ThorstenBr/A2USB
+  * IRQ and USB-power functionalities necessary for the A2USB firmware kindly provided by Thorsten Brehm: https://github.com/ThorstenBr/A2USB
   * removed the reset circuitry
   * removed voltage dividers
 
