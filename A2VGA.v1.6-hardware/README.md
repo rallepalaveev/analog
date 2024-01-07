@@ -9,6 +9,8 @@ This v1.6 implements:
   * removed the reset circuitry
   * removed voltage dividers
 
+N.B.: Please note that I have not tested the gerbers yet due to time constraints, so please report any errors.
+
 Acknowledgements
 
 This is a fork of David Kuder V2RetroComputing and ∀2 Retro Computing project with a new board design intended to fully support his software. The original design was posted by Mark Aikens Apple II VGA.
